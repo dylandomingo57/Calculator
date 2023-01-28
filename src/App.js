@@ -17,15 +17,22 @@ function App() {
     }
     setTotalExpression(totalExpression + e.target.textContent);
   }
+
   const handleOpClick = (e) => {
     setOperator(e.target.textContent);
     setTotalExpression(totalExpression + e.target.textContent)
     changeNum(true);
   }
-  const handleClearClick = () => {
 
+  function handleClearClick() {
+    setNum1(0);
+    setNum2(0);
+    setOperator("");
+    setTotalExpression("");
+    changeNum(false);
   }
-  const handleEqualClick = () => {
+
+  function handleEqualClick() {
     console.log(num1);
     console.log(num2);
     switch(operator) {
@@ -47,8 +54,6 @@ function App() {
 
       default:
     }
-    setNum1(0);
-    setNum2(0);
   }
 
   return(
@@ -75,7 +80,7 @@ function App() {
         <button onClick={handleOpClick}>*</button>
       </div>
       <div>
-        <button onClick={handleNumClick}>AC</button>
+        <button onClick={handleClearClick}>AC</button>
         <button onClick={handleNumClick}>0</button>
         <button onClick={handleEqualClick}>=</button>
         <button onClick={handleOpClick}>/</button>
